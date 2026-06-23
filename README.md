@@ -1,17 +1,45 @@
-# Security-log-monitor
-# Security Log Monitor
+# 🛡️ Security Log Monitor
 
-PowerShell tool that monitors Windows Security logs and detects suspicious activity in the last 24 hours.
+A lightweight PowerShell-based Security Information & Event Monitoring (SIEM-like) tool for Windows.
 
-## Features
-- Failed logon detection (4625)
-- User creation tracking (4720)
-- Security log cleared alert (1102)
-- Group membership changes
-- GUI / MessageBox alerts
+It analyzes the Windows Security Event Log and detects potentially suspicious activity within the last 24 hours.
 
-## Usage
-Run with PowerShell:
+---
+
+## 📌 Features
+
+- 🔍 Monitors Windows Security Event Log
+- ⏱ Analyzes last 24 hours of activity
+- 🚨 Detects security-relevant Event IDs:
+  - `4625` — Failed logon attempts
+  - `4720` — New user created
+  - `4726` — User deleted
+  - `4728` — Added to global group
+  - `4732` — Added to local group
+  - `4672` — Admin privilege logon
+  - `1102` — Security log cleared (critical)
+
+- 🧠 Human-readable event descriptions
+- 📊 Sorted event timeline output
+- 🪟 Popup alert notifications (MessageBox)
+- 📁 Export-ready structure (can be extended to CSV/HTML)
+
+---
+
+## ⚙️ How It Works
+
+The script uses:
+
+- `Get-WinEvent` for querying Windows Security logs
+- Event ID filtering for relevant security signals
+- A lookup table to translate Event IDs into readable descriptions
+- Simple alert logic to notify the user when suspicious activity is found
+
+---
+
+## 🚀 Usage
+
+### Run directly in PowerShell:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\SecurityMonitor.ps1
