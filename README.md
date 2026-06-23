@@ -16,7 +16,6 @@ It analyzes the Windows Security Event Log and detects potentially suspicious ac
   - `4726` — User deleted
   - `4728` — Added to global group
   - `4732` — Added to local group
-  - `4672` — Admin privilege logon
   - `1102` — Security log cleared (critical)
 
 - 🧠 Human-readable event descriptions
